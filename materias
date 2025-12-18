@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Malla Licenciatura en Turismo – UNMdP</title>
+
+<style>
+body{
+  font-family: Arial, sans-serif;
+  background:#fff0f5;
+  padding:20px;
+}
+h1{text-align:center;}
+#progreso{
+  text-align:center;
+  font-size:18px;
+  margin:15px 0;
+}
+.anio{margin-bottom:30px;}
+.anio h2{
+  background:#ec407a;
+  color:white;
+  padding:10px;
+  border-radius:12px;
+}
+.materias{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+}
+.materia{
+  width:220px;
+  padding:10px;
+  border-radius:14px;
+  background:#f8bbd0;
+  opacity:.4;
+  pointer-events:none;
+  text-align:center;
+}
+.materia.activa{
+  opacity:1;
+  pointer-events:auto;
+}
+.materia.aprobada{
+  background:#f48fb1;
+}
+button{
+  margin-top:8px;
+  border:none;
+  border-radius:8px;
+  padding:6px;
+  cursor:pointer;
+}
+#reset{
+  display:block;
+  margin:20px auto;
+  background:#ec407a;
+  color:white;
+  padding:10px 15px;
+}
+</style>
+</head>
+
+<body>
+
+<h1>🌸 Malla Interactiva – Licenciatura en Turismo (UNMdP)</h1>
+<div id="progreso"></div>
+<button id="reset" onclick="resetear()">Resetear progreso</button>
+
+<!-- 1° AÑO -->
+<div class="anio">
+<h2>1° Año</h2>
+<div class="materias">
+  <div class="materia" id="101"><p>Introducción a la Economía I</p><button onclick="toggle('101')">Aprobar</button></div>
+  <div class="materia" id="161"><p>Introducción al Turismo I</p><button onclick="toggle('161')">Aprobar</button></div>
+  <div class="materia" id="114"><p>Introducción a la Matemática I</p><button onclick="toggle('114')">Aprobar</button></div>
+  <div class="materia" id="180"><p>Historia Económica y Social I</p><button onclick="toggle('180')">Aprobar</button></div>
+  <div class="materia" id="158"><p>Sociología Aplicada</p><button onclick="toggle('158')">Aprobar</button></div>
+  <div class="materia" id="216"><p>El Arte en la Cultura</p><button onclick="toggle('216')">Aprobar</button></div>
+  <div class="materia" id="104"><p>Principios de Administración</p><button onclick="toggle('104')">Aprobar</button></div>
+</div>
+</div>
+
+<!-- 2° AÑO -->
+<div class="anio">
+<h2>2° Año</h2>
+<div class="materias">
+  <div class="materia" id="202"><p>Derecho Constitucional</p><button onclick="toggle('202')">Aprobar</button></div>
+  <div class="materia" id="307"><p>Derecho Administrativo</p><button onclick="toggle('307')">Aprobar</button></div>
+  <div class="materia" id="215"><p>Antropología Cultural</p><button onclick="toggle('215')">Aprobar</button></div>
+  <div class="materia" id="277"><p>Espacios Turísticos Mundiales</p><button onclick="toggle('277')">Aprobar</button></div>
+
+  <div class="materia" id="280" data-correlativas="180"><p>Historia Económica y Social II</p><button onclick="toggle('280')">Aprobar</button></div>
+  <div class="materia" id="308" data-correlativas="104"><p>Funciones Organizacionales</p><button onclick="toggle('308')">Aprobar</button></div>
+  <div class="materia" id="251" data-correlativas="114"><p>Estadística Aplicada</p><button onclick="toggle('251')">Aprobar</button></div>
+  <div class="materia" id="227" data-correlativas="104"><p>Contabilidad General</p><button onclick="toggle('227')">Aprobar</button></div>
+</div>
+</div>
+
+<!-- 3° AÑO -->
+<div class="anio">
+<h2>3° Año</h2>
+<div class="materias">
+  <div class="materia" id="112"><p>Recursos Naturales</p><button onclick="toggle('112')">Aprobar</button></div>
+  <div class="materia" id="356"><p>Metodología de la Investigación</p><button onclick="toggle('356')">Aprobar</button></div>
+  <div class="materia" id="465"><p>Psicología de Grupos</p><button onclick="toggle('465')">Aprobar</button></div>
+
+  <div class="materia" id="323" data-correlativas="277"><p>Espacios Turísticos Americanos</p><button onclick="toggle('323')">Aprobar</button></div>
+  <div class="materia" id="324" data-correlativas="101"><p>Economía Aplicada</p><button onclick="toggle('324')">Aprobar</button></div>
+  <div class="materia" id="113" data-correlativas="161"><p>Teoría del Turismo y la Recreación</p><button onclick="toggle('113')">Aprobar</button></div>
+  <div class="materia" id="325" data-correlativas="308"><p>Organizaciones de Alojamiento y Recreación</p><button onclick="toggle('325')">Aprobar</button></div>
+  <div class="materia" id="207" data-correlativas="216,215"><p>Recursos Culturales</p><button onclick="toggle('207')">Aprobar</button></div>
+</div>
+</div>
+
+<!-- 4° AÑO -->
+<div class="anio">
+<h2>4° Año</h2>
+<div class="materias">
+  <div class="materia" id="481"><p>Agencias de Viajes y Transporte</p><button onclick="toggle('481')">Aprobar</button></div>
+
+  <div class="materia" id="349" data-correlativas="202,324"><p>Economía y Organización del Sector Público</p><button onclick="toggle('349')">Aprobar</button></div>
+  <div class="materia" id="432" data-correlativas="104,324"><p>Administración Financiera de Organizaciones Turísticas</p><button onclick="toggle('432')">Aprobar</button></div>
+  <div class="materia" id="433" data-correlativas="308"><p>Comercialización Aplicada</p><button onclick="toggle('433')">Aprobar</button></div>
+  <div class="materia" id="482" data-correlativas="349"><p>Gestión Pública del Turismo</p><button onclick="toggle('482')">Aprobar</button></div>
+  <div class="materia" id="483" data-correlativas="356"><p>Investigación Aplicada al Turismo</p><button onclick="toggle('483')">Aprobar</button></div>
+  <div class="materia" id="434" data-correlativas="308,465"><p>Gestión de Personal en Organizaciones Turísticas</p><button onclick="toggle('434')">Aprobar</button></div>
+</div>
+</div>
+
+<!-- 5° AÑO -->
+<div class="anio">
+<h2>5° Año</h2>
+<div class="materias">
+  <div class="materia" id="499"><p>Ética y Responsabilidad Social</p><button onclick="toggle('499')">Aprobar</button></div>
+  <div class="materia" id="OPT1"><p>Optativa I</p><button onclick="toggle('OPT1')">Aprobar</button></div>
+  <div class="materia" id="OPT2"><p>Optativa II</p><button onclick="toggle('OPT2')">Aprobar</button></div>
+
+  <div class="materia" id="508" data-correlativas="113"><p>Política y Planificación Turística</p><button onclick="toggle('508')">Aprobar</button></div>
+  <div class="materia" id="583" data-correlativas="349,432"><p>Proyectos Turísticos</p><button onclick="toggle('583')">Aprobar</button></div>
+  <div class="materia" id="509" data-correlativas="325,481,482"><p>Práctica Profesional en Turismo</p><button onclick="toggle('509')">Aprobar</button></div>
+</div>
+</div>
+
+<script>
+function toggle(id){
+  const m = document.getElementById(id);
+  m.classList.toggle("aprobada");
+  m.querySelector("button").textContent =
+    m.classList.contains("aprobada") ? "Aprobada" : "Aprobar";
+  guardar();
+  desbloquear();
+  actualizarProgreso();
+}
+
+function guardar(){
+  const ids = [...document.querySelectorAll(".materia.aprobada")].map(m=>m.id);
+  localStorage.setItem("aprobadas", JSON.stringify(ids));
+}
+
+function cargar(){
+  const data = JSON.parse(localStorage.getItem("aprobadas")) || [];
+  data.forEach(id=>{
+    const m = document.getElementById(id);
+    if(m){
+      m.classList.add("aprobada");
+      m.querySelector("button").textContent="Aprobada";
+    }
+  });
+  desbloquear();
+  actualizarProgreso();
+}
+
+function desbloquear(){
+  document.querySelectorAll(".materia").forEach(m=>{
+    if(!m.hasAttribute("data-correlativas")){
+      m.classList.add("activa");
+      return;
+    }
+    const correlativas = m.dataset.correlativas.split(",");
+    const habilitada = correlativas.every(id =>
+      document.getElementById(id)?.classList.contains("aprobada")
+    );
+    if(habilitada) m.classList.add("activa");
+    else m.classList.remove("activa");
+  });
+}
+
+function actualizarProgreso(){
+  const materias = [...document.querySelectorAll(".materia")]
+    .filter(m=>!m.id.startsWith("OPT"));
+  const aprobadas = materias.filter(m=>m.classList.contains("aprobada")).length;
+  const porcentaje = Math.round((aprobadas / materias.length) * 100);
+  document.getElementById("progreso").innerHTML =
+    `💗 Materias aprobadas: <b>${aprobadas}</b> / ${materias.length} — ${porcentaje}%`;
+}
+
+function resetear(){
+  if(confirm("¿Borrar todo el progreso?")){
+    localStorage.removeItem("aprobadas");
+    location.reload();
+  }
+}
+
+cargar();
+</script>
+
+</body>
+</html>
